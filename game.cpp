@@ -14,16 +14,20 @@ int main() {
     int num2 = rand() % 100 + 1;
     
     // Make sure they aren't the exact same number
-    while (num1 == num2) {
+    while (num1 == num2) 
+    {
         num2 = rand() % 100 + 1;
     }
 
     // Figure out which link goes to which number
     string link1, link2;
-    if (num1 > num2) {
+    if (num1 > num2) 
+    {
         link1 = "/right.htm";
         link2 = "/wrong.htm";
-    } else {
+    } 
+    else 
+    {
         link1 = "/wrong.htm";
         link2 = "/right.htm";
     }
