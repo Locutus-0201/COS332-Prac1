@@ -43,7 +43,7 @@ int main() {
     cout << "</head>\n";
     cout << "<body>\n";
     cout << "<h1>Which number is larger?</h1>\n";
-    cout << "<p>Click on the larger number below:</p>\n";
+    cout << "<h2>Click on the larger number below:</h2>\n";
     
     cout << "<h2>\n";
     cout << "<a href=\"" << Page1 << "\">" << num1 << "</a> &nbsp;\n";
