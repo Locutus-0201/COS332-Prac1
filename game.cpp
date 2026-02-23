@@ -3,60 +3,52 @@
 #include <ctime>
 #include <string>
 
+//To stop browser caching, this is the way apparently: https://stackoverflow.com/questions/16716695/prevent-caching-of-html-page
 using namespace std;
 
 int main() {
-    // Seed the random number generator
     srand(time(0));
     
-    // Generate two distinct random numbers between 1 and 100
-    int num1 = rand() % 100 + 1;
-    int num2 = rand() % 100 + 1;
+    int num1 = rand() % 1000 + 1;
+    int num2 = rand() % 1000 + 1;
     
-    // Make sure they aren't the exact same number
+    //more consistent than if
     while (num1 == num2) 
     {
-        num2 = rand() % 100 + 1;
+        num2 = rand() % 1000 + 1;
     }
 
-    // Figure out which link goes to which number
-    string link1, link2;
+    string Page1, Page2;
     if (num1 > num2) 
     {
-        link1 = "/right.htm";
-        link2 = "/wrong.htm";
+        Page1 = "/right.htm";
+        Page2 = "/wrong.htm";
     } 
+    
     else 
     {
-        link1 = "/wrong.htm";
-        link2 = "/right.htm";
+        Page1 = "/wrong.htm";
+        Page2 = "/right.htm";
     }
 
-    // Print the crucial HTTP header followed by TWO blank lines
+    //sending doc type info, and anti caching info 
     cout << "Content-type: text/html\n\n";
-
-    // Print the HTML page structure
     cout << "<!DOCTYPE html>\n";
     cout << "<html lang=\"en\">\n";
     cout << "<head>\n";
-    cout << "    <meta charset=\"UTF-8\">\n";
+    cout << "<meta http-equiv=\"Cache-Control\" content=\"no-store\">\n";
     
-    // Anti-caching tags to ensure the browser loads a fresh game every time
-    cout << "    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n";
-    cout << "    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n";
-    cout << "    <meta http-equiv=\"Expires\" content=\"0\">\n";
-    
-    cout << "    <title>Number Game</title>\n";
+    //content of page
+    cout << "<title>Number Game</title>\n";
     cout << "</head>\n";
     cout << "<body>\n";
-    cout << "    <h1>Which number is larger?</h1>\n";
-    cout << "    <p>Click on the larger number below:</p>\n";
+    cout << "<h1>Which number is larger?</h1>\n";
+    cout << "<p>Click on the larger number below:</p>\n";
     
-    // Print the numbers as hyperlinks
-    cout << "    <h2>\n";
-    cout << "        <a href=\"" << link1 << "\">" << num1 << "</a> &nbsp; &nbsp; &nbsp;\n";
-    cout << "        <a href=\"" << link2 << "\">" << num2 << "</a>\n";
-    cout << "    </h2>\n";
+    cout << "<h2>\n";
+    cout << "<a href=\"" << Page1 << "\">" << num1 << "</a> &nbsp;\n";
+    cout << "<a href=\"" << Page2 << "\">" << num2 << "</a>\n";
+    cout << "</h2>\n";
     
     cout << "</body>\n";
     cout << "</html>\n";
