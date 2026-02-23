@@ -5,4 +5,4 @@ deploy: game.cpp right.htm wrong.htm
 	sudo cp right.htm wrong.htm /var/www/html/
 	sudo cp game /usr/lib/cgi-bin/
 	sudo chmod +x /usr/lib/cgi-bin/game
-	@echo "Success! The latest version is now live on the server."
+	@echo "Uploaded to server, Now you can access the game at http://localhost/cgi-bin/game"
